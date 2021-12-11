@@ -1,0 +1,24 @@
+steps:
+  # Deploy function
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    id: deploy-function
+    args:
+      - gcloud
+      - beta
+      - functions
+      - deploy
+      - ${_FUNCTION_NAME}
+      - --entry-point=${_FUNCTION_ENTRY_POINT}
+      - --region=${_REGION}
+      - --source=.
+      - --trigger-http
+      - --runtime=${_RUNTIME}
+      - --min-instances=1
+      - --security-level=secure-always
+      - --allow-unauthenticated
+
+substitutions:
+  _FUNCTION_NAME: convertkit
+  _FUNCTION_ENTRY_POINT: main
+  _REGION: us-east4
+  _RUNTIME: nodejs14
