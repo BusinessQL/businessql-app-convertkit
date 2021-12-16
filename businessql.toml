@@ -1,0 +1,17 @@
+name = "ConvertKit"
+nameId = "convertkit"
+categories = ["email"]
+version = "0.0.1-alpha"
+logo = "https://raw.githubusercontent.com/BusinessQL/businessql-app-convertkit/main/images/logo.svg"
+
+[settings]
+  [settings.fields]
+  label = "API Secret"
+  name = "apiSecret"
+  type = "password"
+
+[developer]
+nameId = "businessql"
+
+[theme.colors]
+primary = "#FB6970"

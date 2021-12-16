@@ -1,0 +1,60 @@
+[query]
+  # get subscriber
+  [query.getSubscriber]
+  type = "api"
+  url = "https://api.convertkit.com/v3/subscribers/{args.id}?api_secret={data.apiSecret}"
+  method = "GET"
+
+    [query.getSubscriber.response]
+      [query.getSubscriber.response.success]
+      id = "{{result.subscriber.id}}"
+      email = "{{result.subscriber.email_address}}"
+      name = "{{result.subscriber.first_name}}"
+  
+[mutation]
+  # subscribe
+  [mutation.subscribe]
+  type = "api"
+  url = "https://api.convertkit.com/v3/tags/{args.groupId}/subscribe?api_secret={data.apiSecret}"
+  method = "POST"
+
+    [mutation.subscribe.data]
+    email = "{{args.email}}"
+    first_name = "{{args.name}}"
+
+    [mutation.subscribe.response]
+      [mutation.subscribe.response.success]
+      id = "{{result.subscription.subscriber.id}}"
+      email = "{{result.subscription.subscriber.email_address}}"
+      name = "{{result.subscription.subscriber.first_name}}"
+
+  # update subscriber
+  [mutation.updateSubscriber]
+  type = "api"
+  url = "https://api.convertkit.com/v3/subscribers/{args.id}?api_secret={data.apiSecret}"
+  method = "PUT"
+
+    [mutation.updateSubscriber.data]
+      email_address = "{{args.email}}"
+      first_name = "{{args.name}}"
+
+    [mutation.updateSubscriber.response]
+      [mutation.updateSubscriber.response.success]
+      id = "{{result.subscriber.id}}"
+      email = "{{result.subscriber.email_address}}"
+      name = "{{result.subscriber.first_name}}"
+
+  # unsubscribe
+  [mutation.unsubscribe]
+  type = "api"
+  url = "https://api.convertkit.com/v3/unsubscribe?api_secret={data.apiSecret}"
+  method = "PUT"
+
+    [mutation.unsubscribe.data]
+      email = "{{args.email}}"
+
+    [mutation.unsubscribe.response]
+      [mutation.unsubscribe.response.success]
+      id = "{{result.subscriber.id}}"
+      email = "{{result.subscriber.email_address}}"
+      name = "{{result.subscriber.first_name}}"
