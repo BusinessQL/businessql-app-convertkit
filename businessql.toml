@@ -1,7 +1,7 @@
 name = "ConvertKit"
 nameId = "convertkit"
 categories = ["email"]
-version = "0.0.1-alpha"
+version = "0.0.1"
 logo = "https://raw.githubusercontent.com/BusinessQL/businessql-app-convertkit/main/images/logo.svg"
 
 [settings]
